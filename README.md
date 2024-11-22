@@ -5,10 +5,7 @@ This is a FastAPI-based web application that provides various Natural Language P
 ### Features
 - **Text Summarization**: Summarizes long texts into concise versions using the `facebook/bart-large-cnn` model.
 - **Sentiment Analysis**: Analyzes the sentiment (positive/negative/neutral) of a given text.
-- **Content Generation**: Generates text based on user-defined prompts using the `GPT-2` model.
 - **News Fetching**: Fetches the latest news articles based on a specified keyword, with filtering options (like language and date range) via the NewsAPI service.
-- **Language Translation**: Translates text from one language to another using Hugging Face translation models (e.g., English to Spanish).
-- **Sentiment Analysis on Summarized Text**: A combined endpoint that first summarizes the provided text and then performs sentiment analysis on the summary.
 
 ### Setup
 
@@ -36,11 +33,8 @@ This is a FastAPI-based web application that provides various Natural Language P
 ### Endpoints
 
 - `/summarize`: Summarizes a given text.
+- `/fetch_articles`: Fetches news articles based on a keyword.
 - `/analyze_sentiment`: Analyzes the sentiment of a provided text.
-- `/generate_content`: Generates text based on a user prompt.
-- `/fetch_news`: Fetches news articles based on a keyword.
-- `/translate_text`: Translates a given text into a specified target language.
-- `/summarize_and_analyze`: Summarizes a text and analyzes the sentiment of the summary.
 
 ### Technologies Used
 - **FastAPI**: A modern, fast (high-performance) web framework for building APIs with Python 3.7+.
