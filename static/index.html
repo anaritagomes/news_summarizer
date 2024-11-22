@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Analyzer</title>
+</head>
+<body>
+    <h1>Landing Page Analyzer</h1>
+    <form id="landing-page-form">
+        <label for="url">Landing Page URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <div id="results">
+        <!-- Results will be displayed here -->
+    </div>
+
+    <script>
+        document.getElementById('landing-page-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const url = document.getElementById('url').value;
+
+            fetch('/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('results').innerHTML = `
+                    <h3>Analysis Results</h3>
+                    <p><strong>Sentiment:</strong> ${data.sentiment}</p>
+                    <p><strong>Readability:</strong> ${JSON.stringify(data.readability)}</p>
+                    <p><strong>SEO:</strong> ${JSON.stringify(data.seo)}</p>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
